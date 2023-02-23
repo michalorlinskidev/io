@@ -1,22 +1,20 @@
-
 def parse_number(value):
     if len(value) != 6:
         raise ValueError
     return float(value)
 
 
-def binary_search(table, value):
+def binary_search(data, value):
     left_index = 0
-    right_index = len(table)
-    index = 0
-    while left_index != right_index - 1:
+    right_index = len(data) - 1
+    while left_index < right_index:
         index = (left_index + right_index) // 2
-        if value < table[index]:
-            left_index = index
+        if value < data[index]:
+            left_index = index + 1
         else:
             right_index = index
 
-    return index
+    return right_index
 
 
 if __name__ == "__main__":
@@ -40,9 +38,7 @@ if __name__ == "__main__":
                     else:
                         position = binary_search(table, number)
                         table[position] = number
-                result = (counter+1)*100
-                print(table)
-                print(counter)
+                result = (counter + 1) * 100
         except ValueError:
             result = "NONSENS"
 
